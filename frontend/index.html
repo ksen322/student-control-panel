@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Список студентов</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script defer src="main.js"></script>
+  <style>
+    h1{
+      margin-bottom: 20px;
+    }
+    .form-btn {
+      margin-bottom: 20px;
+      padding: 10px;
+    }
+    .container-fluid{
+      max-width: 1990px;
+    }
+    th{
+      width: 100%;
+    }
+
+    form{
+      width: 100%;
+    }
+
+    #addStudentsForm .row:last-of-type{
+      margin-bottom: 20px;
+    }
+
+    #filterStd .row:last-of-type{
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Этап 1. Создайте верстку элементов, которые будут статичны (неизменны).  -->
+  <div class="container-fluid">
+  <h1>Панель управления студентами</h1>
+  <div id="error"></div>
+  <form id="addStudentsForm">
+    <div class="row">
+      <label for="firstNameInput" class="col-4">
+        Имя:
+        <input class="form-control" type="text" id="firstNameInput" required oninvalid="this.setCustomValidity('Не оставляйте поле Имя пустым')" oninput="this.setCustomValidity('')">
+      </label>
+      <label for="lastNameInput" class="col-4">
+        Фамилия:
+        <input class="form-control"  type="text" id="lastNameInput" required oninvalid="this.setCustomValidity('Не оставляйте поле Фамилия пустым')" oninput="this.setCustomValidity('')">
+      </label>
+      <label for="middleNameInput" class="col-4">
+        Отчество:
+        <input class="form-control"  type="text" id="middleNameInput" required oninvalid="this.setCustomValidity('Не оставляйте поле Фамилия пустым')" oninput="this.setCustomValidity('')">
+      </label>
+    </div>
+    <div class="row">
+      <label for="birthDateInput" class="col-4">
+        Дата рождения:
+        <input class="form-control"  type="date" id="birthDateInput" required oninvalid="this.setCustomValidity('Не оставляйте поле Дата Рождения пустым')" oninput="this.setCustomValidity('')">
+      </label>
+      <label for="startYearInput" class="col-4">
+        Год начала обучения:
+        <input class="form-control"  type="number" id="startYearInput" required oninvalid="this.setCustomValidity('Не оставляйте поле Год начала обучения пустым')" oninput="this.setCustomValidity('')">
+      </label>
+      <label for="facultyInput" class="col-4">
+        Факультет:
+        <input class="form-control"  type="text" id="facultyInput" required oninvalid="this.setCustomValidity('Не оставляйте поле Факультет пустым')" oninput="this.setCustomValidity('')">
+      </label>
+    </div>
+    <button class="form-btn col-12 btn-primary">Добавить студента</button>
+  </form>
+  <form id="filterStd">
+    <div class="row">
+      <label for="nameFilter" class="col-4">Фильтр по ФИО:
+        <input class="form-control"  type="text" id="nameFilter">
+      </label>
+      <label for="facultyFilter" class="col-4">
+        Фильтр по факультету:
+        <input class="form-control"  type="text" id="facultyFilter">
+      </label>
+    </div>
+    <div class="row">
+      <label for="startYearFilter" class="col-4">
+        Фильтр по году начала обучения:
+        <input class="form-control"  type="number" id="startYearFilter" min="2000" max="9999">
+      </label>
+      <label for="endYearFilter" class="col-4">
+        Фильтр по году окончания обучения:
+        <input class="form-control"  type="number" id="endYearFilter" min="2000" max="9999">
+      </label>
+    </div>
+    <!-- <button class="mg-5" type="submit">Найти</button> -->
+  </form>
+
+
+  <table id="studentsTable" class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th id="name-column">ФИО студента</th>
+        <th >Факультет</th>
+        <th>Дата Рождения и возраст</th>
+        <th>Годы обучения</th>
+      </tr>
+    </thead>
+    <tbody id="studentTableBody"></tbody>
+  </table>
+</div>
+</body>
+
+</html>
